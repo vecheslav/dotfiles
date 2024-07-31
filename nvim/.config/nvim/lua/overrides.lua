@@ -7,17 +7,17 @@ local npcall = vim.F.npcall
 local M = {}
 
 -- FIXME: Workaround for https://github.com/neovim/neovim/issues/28058
-local make_client_capabilities = vim.lsp.protocol.make_client_capabilities
-function M.make_client_capabilities()
-	local capabilities = make_client_capabilities()
-	if not (capabilities.workspace or {}).didChangeWatchedFiles then
-		vim.notify("lsp capability didChangeWatchedFiles is already disabled", vim.log.levels.WARN)
-	else
-		capabilities.workspace.didChangeWatchedFiles = nil
-	end
-
-	return capabilities
-end
+-- local make_client_capabilities = vim.lsp.protocol.make_client_capabilities
+-- function M.make_client_capabilities()
+-- 	local capabilities = make_client_capabilities()
+-- 	if not (capabilities.workspace or {}).didChangeWatchedFiles then
+-- 		vim.notify("lsp capability didChangeWatchedFiles is already disabled", vim.log.levels.WARN)
+-- 	else
+-- 		capabilities.workspace.didChangeWatchedFiles = nil
+-- 	end
+--
+-- 	return capabilities
+-- end
 
 local function find_window_by_var(name, value)
 	for _, win in ipairs(api.nvim_list_wins()) do

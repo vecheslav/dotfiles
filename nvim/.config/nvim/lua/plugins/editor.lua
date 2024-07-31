@@ -9,7 +9,12 @@ return {
 		},
 		keys = {
 			{ "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Telescope: Live grep" },
-			{ "<leader>/", '"zy<cmd>Telescope live_grep<CR><C-r>z', mode = "x", desc = "Telescope: Live grep" }, -- live grep with selection
+			{
+				"<leader>/",
+				'"zy<cmd>Telescope live_grep<CR><C-r>z',
+				mode = "x",
+				desc = "Telescope: Live grep",
+			}, -- live grep with selection
 			{ "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Telescope: Command history" },
 
 			{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Telescope: Find files" },
@@ -44,14 +49,14 @@ return {
 					},
 					results_title = "",
 					preview_title = "",
-					prompt_prefix = "→ ",
+					prompt_prefix = "> ",
 					selection_caret = "",
 					entry_prefix = "",
 					get_status_text = function(self)
 						local total = self.stats.processed or 0
 						local matches = total - (self.stats.filtered or 0)
 
-						return string.format(" %s", matches)
+						return string.format("%s/%s", matches, total)
 					end,
 					multi_icon = "",
 					preview = { msg_bg_fillchar = " " },
@@ -118,7 +123,7 @@ return {
 					update_root = false,
 				},
 				view = {
-					width = 40,
+					width = 32,
 				},
 				git = {
 					enable = true,
@@ -172,7 +177,7 @@ return {
 	},
 	{
 		"petertriho/nvim-scrollbar",
-    enabled = false,
+		enabled = false,
 		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		config = function()
 			require("scrollbar").setup({

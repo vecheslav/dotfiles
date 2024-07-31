@@ -31,7 +31,9 @@ return {
 			debug = false,
 			show_help = false,
 			window = {
-				width = 0.35,
+				width = 0.4,
+        relative = "win",
+        titl = "AI Chat",
 			},
 			mappings = {
 				reset = false,
